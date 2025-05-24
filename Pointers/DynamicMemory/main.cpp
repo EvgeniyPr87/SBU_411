@@ -10,6 +10,7 @@ using std::endl;
 void FillRand(int arr[], const int n);
 void FillRand(double arr[], const int n);
 void FillRand(int** arr, const int rows, const int cols);
+void FillRand(double** arr, const int rows, const int cols);
 
 template<typename T> void Print(T arr[], const int n);
 template<typename T> void Print(T** arr, const int rows, const int cols);
@@ -26,6 +27,7 @@ template<typename T> T** pop_row_back(T** arr, int& rows, const int cols);
 template<typename T> void pop_col_back(T** arr, const int rows, int& cols);
 #define DYNAMIC_MEMORY_1
 //#define DYNAMIC_MEMORY_2
+//#define DATA_TYPE double
 
 void main()
 {
@@ -96,13 +98,16 @@ void main()
 	cout << "Введите количество строк: "; cin >> rows;
 	cout << "Введите количество элементов строки: "; cin >> cols;
 
+	typedef double DataTayp
+
 	//1) Создаем массив указателей:
-	int** arr = new int* [rows];
+
+		DataTayp** arr = new DataTayp * [rows];
 
 	//2) Выделяем память под строки двумерного динамического массива:
 	for (int i = 0; i < rows; i++)
 	{
-		arr[i] = new int[cols];
+		arr[i] = new DataTayp[cols];
 	}
 
 	/*cout << "Память выделена, для добавления столбца"<<endl;
@@ -167,6 +172,17 @@ void FillRand(int** arr, const int rows, const int cols)
 		}
 	}
 }
+void FillRand(double** arr, const int rows, const int cols)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			arr[i][j] = double(rand() % 10000)/100;
+		}
+	}
+}
+
 template<typename T>void Print(T arr[], const int n)
 {
 	cout << arr << ":\n";
